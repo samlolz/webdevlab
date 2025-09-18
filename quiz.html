@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emanate HTML Template</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+      background: #ffffff; 
+    }
+
+    .hero {
+      position: relative; 
+      background: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; /* Ganti URL gambar hero di sini */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.6); 
+      z-index: 1;
+    }
+
+    .navbar,
+    .main-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 48px 0 48px;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      color: #222; 
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo img {
+      height: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: #222; 
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #3f51b5; 
+    }
+
+    .nav-btn {
+      padding: 8px 22px;
+      border-radius: 6px;
+      border: none;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: background 0.2s;
+    }
+
+    .login-btn {
+      background: #fff; 
+      color: #222;       
+      border: 1px solid #ddd; 
+    }
+
+    .signup-btn {
+      background: #3f51b5; 
+      color: #fff;         
+      border: none;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .main-content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+      color: #222;
+      letter-spacing: 1px;
+    }
+
+    .main-content p {
+      font-size: 1.3rem;
+      color: #444; /
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .main-content .cta-btn {
+      background: #3f51b5; 
+      color: #fff;          
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 14px 32px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(63,81,181,0.12); 
+      transition: background 0.2s;
+    }
+
+    .main-content .cta-btn:hover {
+      background: #283593; 
+    }
+
+    .modular-section {
+      border: 2px solid #ddd; 
+      padding: 40px;
+      margin: 60px auto;
+      max-width: 1200px;
+      background: #ffffff; 
+      text-align: center;
+    }
+
+    .modular-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: #222; 
+    }
+
+    .modular-section p.subtitle {
+      font-size: 1rem;
+      margin-bottom: 40px;
+      color: #555; 
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .feature {
+      text-align: center;
+    }
+
+    .feature img {
+      height: 50px; 
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      font-size: 1.2rem;
+      color: #222; 
+      margin-bottom: 8px;
+    }
+
+    .fast-section {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 60px;
+    }
+
+    .fast-top {
+      background: #080e13; 
+      color: #fff;          
+      padding: 60px 20px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .fast-feature {
+      flex: 1 1 300px;
+      margin: 20px;
+      text-align: left;
+    }
+
+    .fast-feature img {
+      height: 40px; 
+      margin-bottom: 15px;
+    }
+
+    .fast-feature h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .fast-bottom {
+      background: #472e93; 
+      color: #fff;          
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .fast-bottom h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .fast-bottom p {
+      font-size: 1.1rem;
+      color: #ddd; 
+    }
+
+    .pricing-section {
+      background: #080e14;
+      color: #fff;          
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .pricing-section h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .pricing-section p.subtitle {
+      font-size: 1rem;
+      margin-bottom: 40px;
+    }
+
+    .plans {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .plan {
+      background: #0e0a27; 
+      padding: 30px;
+      border-radius: 10px;
+      width: 250px;
+      text-align: center;
+    }
+
+    .plan h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    .price small {
+      font-size: 0.8rem;
+    }
+
+    .plan p {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      color: #ddd; 
+    }
+
+    .plan button {
+      background: #292323; 
+      color: #fff;          
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 16px 0 16px;
+      }
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .footer {
+      background-color: #e8e8e8; 
+      color: rgb(0, 0, 0);
+      font-family: 'Montserrat', sans-serif;
+      padding: 50px 20px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: #000000cc; 
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: rgb(0, 0, 0);
+    }
+
+    .newsletter p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .newsletter form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .newsletter input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .newsletter button {
+      background: #5b3680; 
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .newsletter button:hover {
+      background: #0a73d6; 
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px solid #ffffff33;
+      padding-top: 20px;
+      color: #000000cc;
+    }
+
+    @media (max-width: 900px) {
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter form {
+        flex-direction: column;
+      }
+
+      .newsletter button {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="navbar">
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Logo">
+        EMANATE
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Style Guide</a>
+        <a href="#">Pricing</a>
+        <button class="nav-btn login-btn">Log In</button>
+        <button class="nav-btn signup-btn">Sign Up</button>
+      </div>
+    </div>
+    <div class="main-content">
+      <h1>Emanate HTML Template</h1>
+      <p>A minimal and responsive HTML5 landing page built on lightweight, clean and customizable code.</p>
+      <button class="cta-btn">Get started, it's free!</button>
+    </div>
+  </div>
+
+  <section class="modular-section">
+    <h2>Based on Modular Design</h2>
+    <p class="subtitle">Build awesome websites or landing pages with simple and
+independent parts.</p>
+    <div class="features-grid">
+      <div class="feature"><img src="https://cdn-icons-png.freepik.com/512/10516/10516051.png" alt="Icon Feature 1"><h3>Minimal Design</h3></div>
+      <div class="feature"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWUOyAfWghTZqHIM8rWy5atKT_fGhW-I0cxA&s" alt="Icon Feature 2"><h3>Rocket Fast</h3></div>
+      <div class="feature"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5a/03/ed/5a03edb5-b93b-6859-78ba-abb23a7f7604/AppIcon-Teleprompter-0-0-1x_U007emarketing-0-6-0-85-220.png/1200x630wa.png" alt="Icon Feature 3"><h3>Custom Framework</h3></div>
+      <div class="feature"><img src="https://previews.123rf.com/images/urfandadashov/urfandadashov1809/urfandadashov180900143/109060412-logbook-vector-icon-isolated-on-transparent-background-logbook-logo-concept.jpg" alt="Icon Feature 4"><h3>Style Guide</h3></div>
+      <div class="feature"><img src="https://static.vecteezy.com/system/resources/thumbnails/026/328/572/small_2x/code-icon-symbol-design-illustration-vector.jpg" alt="Icon Feature 5"><h3>CSS + SASS</h3></div>
+      <div class="feature"><img src="https://static.vecteezy.com/system/resources/previews/008/441/961/non_2x/gear-icon-template-flat-design-illustration-eps-10-free-vector.jpg" alt="Icon Feature 6"><h3>100% Customizable</h3></div>
+      <div class="feature"><img src="https://play-lh.googleusercontent.com/nAKL1N0CTCzAO2DzBdRc1DowQ8F5cDh_Mq5Oz8L0LV3CJFiGVh6zQ5JFMUD2Q9vVGw" alt="Icon Feature 7"><h3>Modular Design</h3></div>
+      <div class="feature"><img src="https://cdn-icons-png.flaticon.com/512/4192/4192650.png" alt="Icon Feature 8"><h3>HTML5 Valid</h3></div>
+    </div>
+  </section>
+
+  <section class="fast-section">
+    <div class="fast-top">
+      <div class="fast-feature"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxcSLWv2ClOoSe_NmZA-UH-fISsBMUoarMGw&s" alt="Icon x2 Modules"><h3>x2 Modules</h3><p>Each module can easily be
+turned into a dark version by
+adding.dark as class.</p></div>
+      <div class="fast-feature"><img src="https://cdn-icons-png.flaticon.com/512/8847/8847419.png" alt="Icon Onboarding Screens"><h3>Onboarding Screens</h3><p>Additional pages to log in, sign
+up as well as forgot password
+are included.</p></div>
+      <div class="fast-feature"><img src="https://media.istockphoto.com/id/1263299116/vector/adjustment-icon-symbol-adjusting-settings-logo-sign-vector-illustration-image-isolated-on.jpg?s=612x612&w=0&k=20&c=TE-lkvs0RGHL2EwdDV4wyGEDIe2YzSbYoeUXq96Puzg=" alt="Icon Unlimited Possibilities"><h3>Unlimited Possibilities</h3><p>With a custom framework and
+global classes, build consistent
+pages with ease.</p></div>
+    </div>
+    <div class="fast-bottom">
+      <h2>And... fast. Really Fast.</h2>
+      <p>The main focus of this template is performance, no bloat</p>
+    </div>
+  </section>
+
+  <section class="pricing-section">
+    <h2>Or find the perfect paid plan for your business.</h2>
+    <p class="subtitle">Thousands of people rely on our services.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>For Professionals</h3>
+        <div class="price">$19<small>/mo</small></div>
+        <p>Ut enim ad minimal
+            veniam, quis nostrum
+            execercitationem.
+        </p>
+        <button>Purchase</button>
+      </div>
+      <div class="plan">
+        <h3>For Teams</h3>
+        <div class="price">$49<small>/mo</small></div>
+        <p>Ut enim ad minimal
+            veniam, quis nostrum
+            execercitationem.</p>
+        <button>Purchase</button>
+      </div>
+      <div class="plan">
+        <h3>For Enterprises</h3>
+        <div class="price">$99<small>/mo</small></div>
+        <p>Ut enim ad minimal
+            veniam, quis nostrum
+            execercitationem.</p>
+        <button>Purchase</button>
+      </div>
+    </div>
+  </section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Startup</h3>
+      <ul>
+        <li><a href="#">Getting Started</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Design</a></li>
+        <li><a href="#">Tutorials</a></li>
+        <li><a href="#">Pricing</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Requirements</a></li>
+        <li><a href="#">License</a></li>
+        <li><a href="#">Updates</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Connect</h3>
+      <ul>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Medium</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section newsletter">
+      <h3>Join The Newsletter</h3>
+      <p>Get the latest news and resources right into your inbox every Monday.</p>
+      <form>
+        <input type="email" placeholder="Your email..." required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>HTML Template by UI/UX Assets - © 2018, all rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
