@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-panel {
+  flex: 1;
+  background: url("images/background.jpg") no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.logo img {
+  width: 500px;
+  height: auto;
+}
+
+.gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ececec;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 350px;
+}
+
+.login-box h2 {
+  font-size: 34px;
+  margin-bottom: 5px;
+}
+
+.login-box p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  outline: none;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.forgot {
+  display: block;
+  text-align: right;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #0080ff;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.captcha {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.captcha input {
+  margin-right: 10px;
+}
+
+.btn {
+  width: 100%;
+  background: #0047a3;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #003a8b;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.185);
+}
+
+.signup {
+  margin: 15px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.signup a {
+  color: #0080ff;
+  text-decoration: none;
+}
+
+.note {
+  font-size: 12px;
+  color: #555;
+}
+
+.note .highlight {
+  color: black;
+  font-weight: bold;
+}
+
+.icon-warning {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 2px solid rgb(255, 115, 0);
+  border-radius: 50%;
+  color: rgb(255, 115, 0);
+  font-size: 12px;
+  margin-right: 6px;
+}
