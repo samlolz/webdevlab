@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard — Kampus{% endblock %}
+
+{% block header_actions %}
+<a href="/profile/" class="btn btn-light">Profil</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <!-- Greeting and summary -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">Halo, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %} 👋</h5>
+      <p class="text-muted mb-3">
+        Ini ringkasan cepat aktivitasmu di sistem kampus.
+      </p>
+      <div class="row text-center">
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="border rounded py-3 bg-light">
+            <strong>{{ active_courses_count }}</strong><br>
+            <small class="text-muted">Mata kuliah aktif</small>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="border rounded py-3 bg-light">
+            <strong>{{ pending_tasks_count }}</strong><br>
+            <small class="text-muted">Tugas belum dikumpulkan</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="border rounded py-3 bg-light">
+            <strong>{{ announcements_count }}</strong><br>
+            <small class="text-muted">Pengumuman baru</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcements -->
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Pengumuman Terbaru</h5>
+          {% if announcements %}
+            <ul class="list-group list-group-flush">
+              {% for a in announcements %}
+                <li class="list-group-item">
+                  <strong>{{ a.title }}</strong><br>
+                  <small class="text-muted">{{ a.created_at|date:"j M Y, H:i" }}</small>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="text-muted mb-0">Belum ada pengumuman.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick links -->
+    <div class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Quick Links</h5>
+          <div class="list-group">
+            <a href="/courses/" class="list-group-item list-group-item-action">
+              📚 Daftar Mata Kuliah
+            </a>
+            <a href="/assignments/" class="list-group-item list-group-item-action">
+              📝 Tugas
+            </a>
+            <a href="/grades/" class="list-group-item list-group-item-action">
+              🎓 Nilai
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
